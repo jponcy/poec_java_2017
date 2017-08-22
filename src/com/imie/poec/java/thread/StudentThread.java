@@ -40,11 +40,12 @@ public class StudentThread extends StudentRunnable {
     /**
      * Process to come in curse.
      */
+    @Override
     public void comeToCurse() {
         int duration = (new Random()).nextInt(500);
 
         try {
-            StudentRunnable.sleep(duration);
+            Thread.sleep(duration);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -58,6 +59,7 @@ public class StudentThread extends StudentRunnable {
     /**
      * @return the lastname
      */
+    @Override
     public String getLastname() {
         return lastname;
     }
@@ -66,6 +68,7 @@ public class StudentThread extends StudentRunnable {
      * @param lastname
      *            the lastname to set
      */
+    @Override
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
@@ -73,6 +76,7 @@ public class StudentThread extends StudentRunnable {
     /**
      * @return the firstname
      */
+    @Override
     public String getFirstname() {
         return firstname;
     }
@@ -81,6 +85,7 @@ public class StudentThread extends StudentRunnable {
      * @param firstname
      *            the firstname to set
      */
+    @Override
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
