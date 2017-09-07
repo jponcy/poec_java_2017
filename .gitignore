@@ -1,3 +1,9 @@
 /.project
 /.classpath
 /bin/
+
+/.gradle/
+/.settings/
+/build/
+
+/other_little_projects/interopfiles/bin/
