@@ -3,6 +3,8 @@ package com.imie.poec.java.webservice.tp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 /**
  * The product DB simulation (DP singleton).
  */
@@ -52,5 +54,24 @@ public class ProductDao {
     /** Finds then returns all products. */
     public List<Product> findAll() {
         return this.products;
+    }
+
+    /** Simulate DB persist&flush. */
+    public boolean persist(Product prod) {
+        boolean result = true;
+
+        try {
+            prod.generateId();
+
+            this.products.add(prod);
+        } catch (IdRegenException e) {
+            result = false;
+        }
+
+        return result;
+    }
+
+    public boolean delete(@PathVariable long id) {
+        return this.products.removeIf(element -> element.getId() == id);
     }
 }

@@ -1,6 +1,6 @@
 package com.imie.poec.java.webservice.tp;
 
-public class Product {
+public class Product implements Entity {
     private static Long idGenerator = 0l;
 
     private Long id = null;
