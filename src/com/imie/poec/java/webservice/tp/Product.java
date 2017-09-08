@@ -9,9 +9,11 @@ public class Product {
     private String description;
     private float price;
 
+    /** To create new object. */
     public Product() {
     }
 
+    /** For data initialize. */
     public Product(String name, String reference, String description, float price) {
         this.setName(name);
         this.setReference(reference);

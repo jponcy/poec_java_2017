@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Example | Product list</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="container-fluid">
+        <h1>Product lists</h1>
+
+        <div id="product-list">
+            <p>Loading.</p>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                url: 'http://localhost:8080/product',
+            })
+            .done(function(data) {
+                console.log(data);
+                var lines = [];
+
+                for (var product of data) {
+                    console.log(product);
+                    lines.push($('<tr>')
+                        .append($('<td>').html(product.reference))
+                        .append($('<td>').html(product.name))
+                        .append($('<td>').html(product.price))
+                        .append($('<td>')
+                            .html($('<a>')
+                                .attr('href', 'product/' + product.id)
+                                .html('Voir')
+                            )
+                        )
+                    );
+                }
+
+                $('#product-list').replaceWith($('<table>')
+                    .addClass('table table-hover table-striped')
+                    .append('<thead><tr><th>Reference</th><th>Name</th><th>Price</th><th>Actions</th></tr></thead>')
+                    .append($('<tbody>')
+                        .append(lines)
+                    )
+                );
+            })
+            .fail(function(message) {
+                console.error(message);
+                $('#product-list').replaceWith($('<p>')
+                    .addClass('text text-danger')
+                    .html('Error - impossible to get data.')
+                );
+            })
+            .always(function() {
+                console.log("complete");
+            });
+        });
+    </script>
+  </body>
+</html>
