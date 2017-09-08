@@ -36,4 +36,11 @@ public class GreetingController {
     public Rand randLimitMax(@PathVariable(value = "value") int max) {
         return new Rand(max);
     }
+
+    @RequestMapping(path = "/rand/")
+    public Rand randLimit(
+            @RequestParam(value = "min") int max,
+            @RequestParam(value = "max") int min) {
+        return new Rand(max);
+    }
 }
