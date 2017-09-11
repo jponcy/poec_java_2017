@@ -162,7 +162,7 @@ public class ProductController {
 
     /** Deletes the entity with given id. */
     @SuppressWarnings("rawtypes")
-    @DeleteMapping("/product_ugly/{id}")
+    @DeleteMapping("/product/{id}")
     public ResponseEntity<?> delete(@PathVariable long id) {
         HttpStatus status = (ProductDao.getInstance().delete(id))
                 ? HttpStatus.OK : HttpStatus.NOT_FOUND;

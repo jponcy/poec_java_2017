@@ -1,4 +1,4 @@
-package com.imie.poec.java.webservice;
+package com.imie.poec.java;
 
 import java.io.IOException;
 
