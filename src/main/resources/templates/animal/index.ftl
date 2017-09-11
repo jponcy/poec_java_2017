@@ -22,6 +22,7 @@
                 <th>Name</th>
                 <th>Species</th>
                 <th>Country</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,13 @@
                 <td>${ entity.getName() }</td>
                 <td>${ entity.getSpecies() }</td>
                 <td>${ entity.getCountry() }</td>
+                <td>
+                    <a
+                        class="btn btn-default btn-show"
+                        href="/animal/${entity.id}">
+                        Show
+                    </a>
+                </td>
             </tr>
         </#items>
         </tbody>
